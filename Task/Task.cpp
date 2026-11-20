@@ -388,7 +388,47 @@ int clearData()
 	return 0;
 }
 
+int HelpMenu()
+{
+    char choice = 0;
+    system("cls");
+    cout << "========================================================================" << endl;
+    cout << "                                                            " << endl;
+    cout << green << "                                   Help                             " << reset << endl;
+    cout << "                                                            " << endl;
+    cout << "========================================================================" << endl;
+    cout << "PURPOSE OF THE PROGRAM:                                     " << endl;
+    cout << "   This program is designed to calculate the values of a    " << endl;
+    cout << "   function according to formulae for a given range of data." << endl;
+    cout << endl;
+    cout << "1. DATA INPUT OPTIONS:                                      " << endl;
+    cout << "   - keyboard                                               " << endl;
+    cout << "   - file                                                   " << endl;
+    cout << endl;
+    cout << "2. DATA MANAGEMENT OPTIONS:                                 " << endl;
+    cout << "   - View: See the calculated results directly on the screen" << endl;
+    cout << "   - Save: Store your results into an output file           " << endl;
+    cout << "   - Delete: Clear previous calculation data                " << endl;
+    cout << endl;
+    cout << "MATHEMATICAL FORMULAE:                                      " << endl;
+    cout << "   Depending on 'x' value, the program uses two variants:   " << endl;
+    cout << endl;
+    cout << "   1) If x < 0:" << endl;
+    cout << "      Math form: y = 13 - P_{i=4}^{n-3} (i + x)             " << endl;
+    cout << endl;
+    cout << "   2) If x >= 0:" << endl;
+    cout << "      y = P_{j=1}^{n} [ S_{i=1}^{n+3} (i^2 * (j + (2 - x) / (i + 4))) ]" << endl;
+    cout << "=======================================================================" << endl;
+    cout << endl;
+    cout << "         press 3 to return to the Main menu                  " << endl;
 
+    cin >> choice;
+   if (choice == '3')
+    {
+        return '3';
+    }
+ return 0;
+}
 
 int ExitMenu()
 {
