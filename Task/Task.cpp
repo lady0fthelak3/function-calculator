@@ -43,39 +43,6 @@ int Menu()
     return 1;
 }
 
-int MainMenu()
-{
-        char choice = 0;
-        system("cls");
-        cout << "===================================================" << endl;
-        cout << "                                                   " << endl;
-        cout << green << "                     Main menu          " << reset << endl;
-        cout << "                                                   " << endl;
-        cout << "===================================================" << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "            1. Run calculations                    " << endl;
-        cout << "                                                   " << endl;
-        cout << "            2. Management of data                  " << endl;
-        cout << "                                                   " << endl;
-        cout << "            3. Help                                " << endl;
-        cout << "                                                   " << endl;
-        cout << "            4. Exit the program                    " << endl;
-        cout << "                                                   " << endl;
-        cout << "===================================================" << endl;
-        cout << "                                                   " << endl;
-        cout << "            select an option: ";
-        cin >> choice;
-
-        if (choice < '1' || choice > '4')
-        {
-            cout << "Invalid input. Please try again." << endl;
-            system("pause");
-            return MainMenu();
-        }
-
-        return choice - '0';
-}
 
 int CalculationsMenu()
 {
