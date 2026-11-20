@@ -610,4 +610,106 @@ char runCalculations()
     return askToSaveFile(); 
 }
 
+int main()
+{
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    DWORD dwMode = 0;
+    GetConsoleMode(hOut, &dwMode);
+    SetConsoleMode(hOut, dwMode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
+
+    Menu();
+    bool running = true;
+    while (running)
+    {
+        switch (MainMenu())
+        {
+        case 1:
+            while (true)
+            {
+                char calc = CalculationsMenu();
+                if (calc == '3')
+                {
+                    break;
+                }
+                if (calc == '1')
+                {
+                    char result = runFileCalculations();
+                    if (result == '3')
+                    {
+                        break;
+                    }
+                    if (result == 'q' || result == 'Q')
+                    {
+                        continue;
+                    }
+                }
+                else if (calc == '2')
+                {
+                    char result = runCalculations();
+                    if (result == '3')
+                    {
+                        break;
+                    }
+                    if (result == 'q' || result == 'Q')
+                    {
+                        continue;
+                    }
+                   
+                }
+            }
+            break;
+        case 2:
+            while (true)
+            {
+                int dataman = DataMenu();
+                if (dataman == 3)
+                {
+                    break;
+                }
+                if (dataman == 1)
+                {
+                    system("cls");
+                    cout << "================================================" << endl;
+                    cout << endl;
+                    if (!has_data || previous_results == "")
+                    {
+                        cout << "No previous data found. Run calculations first!" << endl;
+                        cout << endl;
+                        cout << "------------------------------------------------" << endl;
+                        cout << endl;
+                        cout << "Press any key to return...";
+                        system("pause > nul");
+                    }
+                    else
+                    {
+                        cout << previous_results;
+                        char result = askToSaveFile();
+                        if (result == '3')
+                        {
+                            break;
+                        }
+                    }
+                }
+                else if (dataman == 2)
+                {
+                     clearData();
+				}
+            }
+            break;
+        case 3:
+            HelpMenu();
+            break;
+        case 4:
+            if (ExitMenu() == 1)
+            {
+                running = false;
+            }
+            break;
+
+        }
+       
+    }
+    return 0;
+}
+
 
