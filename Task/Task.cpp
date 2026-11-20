@@ -14,8 +14,34 @@ string previous_results = "";
 bool has_data = false;
 
 
-
-
+int Menu()
+{
+    char choice = 0;
+    system("cls");
+    cout << "===================================================" << endl;
+    cout << "                                                   " << endl;
+    cout << green << "           Formula calculation program          " << reset << endl;
+    cout << "                                                   " << endl;
+    cout << "===================================================" << endl;
+    cout << "                                                   " << endl;
+    cout << "                                                   " << endl;
+    cout << "        Welcome to the formula calculating         " << endl;
+    cout << "                     program.                      " << endl;
+    cout << "                                                   " << endl;
+    cout << "        Press 1 to go to the Main menu             " << endl;
+    cout << "                                                   " << endl;
+    cout << "     *Read `Help` before starting the program*     " << endl;
+    cout << "                                                   " << endl;
+    cout << "===================================================" << endl;
+	cin >> choice;
+    if (choice != '1')
+    {
+        cout << "Invalid input. Please try again." << endl;
+        system("pause");
+        return Menu();
+    }
+    return 1;
+}
 
 int MainMenu()
 {
