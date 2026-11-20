@@ -338,7 +338,55 @@ int DataMenu()
     }
 }   
 
+int clearData() 
+{
+    system("cls");
+    cout << "=======================================" << endl;
+    cout << endl;
+    cout << "Are you sure you want to clear the data?" << endl;
+    cout << endl;
+    cout << red << "!Warning: This action will delete your"<< endl << "    results permanently!" << reset << endl;
+    cout << endl;
+    cout << "              1. Yes" << endl;
+    cout << "              2. No" << endl;
+	cout << endl;
+    cout << "=======================================" << endl;
+    cout << endl;
+    cout << "          select an option: ";
+   
+    char choice;
+    cin >> choice;
+    if (choice == '1')
+    {
+        system("cls");
+        cout << "-----------------------------------" << endl;
+        cout << endl;
+        cout << "      Deleting the data..." << endl;
+        cout << endl;
 
+        previous_results = "";
+        has_data = false;
+
+        cout << cyan << "     Data cleared successfully!" << endl << reset;   
+    }
+    else if (choice == '2')
+    {
+        return 0;
+    }
+    else 
+    {
+        cout << "Invalid input. Please try again." << endl;
+        system("pause");
+        return clearData();
+    }
+    cout << "-----------------------------------" << endl;
+    cout << endl;
+    cout << "      Press any key to return..." << endl;
+    cout << endl;
+    cout << "=======================================" << endl;
+    system("pause > nul");
+	return 0;
+}
 
 int HelpMenu()
 {
