@@ -16,7 +16,7 @@ Function Calculator is a C++ console application that calculates the values of a
 ### Program Capabilities
 * User-defined parameter `n` (`7 <= n <= 140`), step `h` (`h > 0`), and interval `[a, b]` (`a <= b`)
 * Input validation and arithmetic overflow protection
-* Color-coded menu-driven interface with built-in Help
+* Color-coded menu-driven interface with built-in _Help_
 * Simple navigation between options
 
 ### Data Input Options
