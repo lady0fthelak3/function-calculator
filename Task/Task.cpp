@@ -237,68 +237,7 @@ char runFileCalculations()
    return askToSaveFile();
 }
 
-char askToSaveFile() 
-{
-    if (previous_results == "")
-    {
-        return 0;
-    }
-    cout << endl;
-    cout << endl;
-    cout << "       Do you want to save the result in a file?" << endl << endl;
-    cout << endl;
-    cout << "                     1. Yes" << endl;
-    cout << "                     2. No" << endl;
-	cout << endl;
-    cout << "-------------------------------------------------" << endl;
-    cout << endl;
-    cout << "       Press 3 to return to the Main menu" << endl;
-    cout << endl;
-    cout << "=================================================" << endl;
-    cout << endl;
-    cout << "              select an option: ";
 
-    char choice;
-    cin >> choice;
-    
-    if (choice == '1')
-    {
-        system("cls");
-        string outFileName = "results.txt";
-        ofstream outFile(outFileName);
-        if (outFile.is_open())
-        {
-            outFile << previous_results;
-            outFile.close();
-
-            cout << "==========================================" << endl << endl;
-            cout << cyan << "File \"" << outFileName << "\" saved successfully!"<< reset << endl<<endl;
-            cout << "------------------------------------------" << endl;
-            cout << endl;
-            cout << "Press any key to return to the previous menu..." << endl;
-            cout << endl;
-            cout << "==========================================" << endl;
-            system("pause > nul");
-        }
-        else
-        {
-            cout << endl;
-            cout << "Error: Could not save the file!" << endl;
-            cout << endl;
-        }
-    }
-    else if (choice == '2') 
-    {
-        return '2';
-    }
-    else if (choice == '3') 
-    {
-        system("cls");
- 
-        return '3';
-    }
-    return 0;
-}
 
 int DataMenu()
 {
