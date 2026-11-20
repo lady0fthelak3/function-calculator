@@ -117,6 +117,127 @@ int CalculationsMenu()
  return choice;
 }
 
+char runFileCalculations() 
+{
+    previous_results = "";
+    has_data = true;
+    system("cls");
+    cout << "===================================================" << endl;
+    cout << endl;
+    cout << "       Select a file from your device" << endl;
+    cout << "      (supported formats .txt, .csv, .xlsx)" << endl;
+    cout << endl;
+    cout << "---------------------------------------------------" << endl;
+    cout << endl;
+    cout << "    Press q to return to the previous menu    " << endl;
+    cout << endl;
+    cout << "---------------------------------------------------" << endl<< endl;
+    cout << "    Press 3 to return to the Main menu" << endl<< endl;
+    cout << "===================================================" << endl<< endl;
+    cout << "    Enter file name (e.g. data.txt) or other option: ";
+
+    string filename;
+    cin >> filename;
+
+    if (filename == "3") 
+    {
+        return '3';
+    }
+    if (filename == "q" || filename == "Q")
+    {
+        return 'q';
+    }
+
+    ifstream file(filename);
+    if (!file.is_open()) 
+    {
+		cout << endl;
+        cout << red << "Error: Could not open file! File might not exist." << reset << endl;
+        system("pause");
+        return runFileCalculations(); 
+    }
+
+    unsigned int n;
+    float a, b, x, h;
+
+    if (!(file >> n))
+    {
+        cout << endl << red << "Error in file: Invalid 'n' parameter! (Must be an integer >= 7, no letters/symbols)" << reset << endl;
+        file.close(); system("pause");
+        return 0;
+    }
+    if (n < 7)
+    {
+        cout << endl << red << "Error in file: 'n' parameter must be >= 7 (Got: " << n << ")" << reset << endl;
+        file.close(); system("pause");
+        return 0;
+    }
+    if (!(file >> h))
+    {
+        cout << endl << red << "Error in file: Invalid 'h' step! (Must be a number > 0, no letters/symbols)" << reset << endl;
+        file.close(); system("pause");
+        return 0;
+    }
+    if (h <= 0)
+    {
+        cout << endl << red << "Error in file: 'h' step must be > 0 (Got: " << h << ")" << reset << endl;
+        file.close(); system("pause");
+        return 0;
+    }
+    if (!(file >> a))
+    {
+        cout << endl << red << "Error in file: Invalid 'a' lower bound! (Must be a number, no letters/symbols)" << reset << endl;
+        file.close(); system("pause");
+        return 0;
+    }
+    if (!(file >> b))
+    {
+        cout << endl << red << "Error in file: Invalid 'b' upper bound! (Must be a number, no letters/symbols)" << reset << endl;
+        file.close(); system("pause");
+        return 0;
+    }
+    if (a > b)
+    {
+        cout << endl << red << "Error in file: Lower bound 'a' cannot be greater than upper bound 'b' (a <= b)" << reset << endl;
+        file.close(); system("pause");
+        return 0;
+    }
+ 
+    file.close(); 
+
+    system("cls");
+    cout << "====================================================" << endl << endl;
+    cout << cyan << "File \"" << filename << "\" added successfully!" << reset<< endl<< endl;
+    cout << "Processing the data..." << endl << endl;
+    cout << "----------------------------------------------------" << endl;
+    cout << endl << endl << endl;
+    cout << "Results for data from " << filename << ":" << endl << endl;
+
+    for (x = a; x <= b; x += h)
+    {
+        float y = 0.0;
+        float product = 1.0;
+        if (x < 0) {
+            for (int i = 4; i <= (int)n - 3; i++) { product *= (i + x); }
+            y = 13 - product;
+        }
+        else {
+            for (int j = 1; j <= n; j++) {
+                float sum = 0.0;
+                for (int i = 1; i <= (int)n + 3; i++) {
+                    sum += pow(i, 2) * (j + (2 - x) / (i + 4));
+                }
+                product *= sum;
+            }
+            y = product;
+        }
+        cout << "x = " << x << "  |  y = " << y << endl;
+        previous_results += "x = " + to_string(x) + "  |  y = " + to_string(y) + "\n";
+
+    }
+   return askToSaveFile();
+}
+
 char askToSaveFile() 
 {
     if (previous_results == "")
