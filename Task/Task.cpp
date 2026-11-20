@@ -479,6 +479,141 @@ int ExitMenu()
     return ExitMenu();
 }
 
+char runCalculations()
+{
+    previous_results = "";
+    char choice = 0;
+    has_data = true;
+    system("cls");
+    unsigned int n;
+    float a, b, x, h;
+    cout << endl;
+    cout << cyan << "                                  MATHEMATICAL FORMULAE                       " << reset << endl;
+    cout << endl;
+    cout << endl;
+    cout << "   Depending on 'x' value, the program uses two variants:   " << endl;
+    cout << endl;
+    cout << "   1) If x < 0:" << endl;
+    cout << "      Math form: y = 13 - P_{i=4}^{n-3} (i + x)             " << endl;
+    cout << endl;
+    cout << "   2) If x >= 0:" << endl;
+    cout << "      y = P_{j=1}^{n} [ S_{i=1}^{n+3} (i^2 * (j + (2 - x) / (i + 4))) ]" << endl;
+    cout << endl;
+	cout <<         "-----------------------------------------------------------------------" << endl;
+	cout << endl;
+    cout << "                   Press q to return to the previous menu    " << endl;
+    cout << endl;
+    cout << endl << "-----------------------------------------------------------------------" << endl;
+    cout << endl;
+    cout << "                   Press 3 to return to the Main menu        " << endl;
+    cout << endl;
+    cout << endl << "-----------------------------------------------------------------------" << endl;
+    cout << endl;
+    cout << "                   Press any key to start calculations    " << endl;
+    cout << endl;
+    cout << endl << "-----------------------------------------------------------------------" << endl;
+    cout << endl;
+    cout << "select an option:";
+    cin >> choice;
+    cout << endl;
+
+	
+    if (choice == '3')
+    {
+        return '3';
+    }
+	else if (choice == 'q'||choice == 'Q')
+	{
+		return 'q';
+	}
+    else
+    {
+        system("pause > nul");
+    }
+    cout << "=======================================================================" << endl;
+
+    do
+    {
+        cout << endl;
+        cout << "Input n - parameter (n>=7): ";
+        cin >> n;
+        if (cin.fail())
+        {
+            cin.clear(); 
+            cin.ignore(10000, '\n');
+            cout << red << "Error: Please enter a valid number!" << reset << endl;
+            n = 0; 
+        }
+    } while (n < 7);
+    do
+    {
+        cout << "Input h - step (h>0): ";
+        cin >> h;
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << red << "Error: Please enter a valid number!" << reset << endl;
+            h = 0.0f;
+        }
+    } while (h <= 0);
+    do
+    {
+        cout << "Input a - lower bound of the interval: ";
+        cin >> a;
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << red << "Error: Invalid input for 'a'!" << reset << endl;
+            a = 1; b = 0;
+            continue;
+        }
+        cout << "Input b - upper bound of the interval(a <= b): ";
+        cin >> b;
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << red << "Error: Invalid input for 'b'!" << reset << endl;
+            a = 1; b = 0;
+            continue;
+        }
+        cout << endl;
+    } while (a > b);
+    cout << "=======================================================================" << endl;
+    for (x = a; x <= b; x += h)
+    {
+        float y = 0.0;
+        float product = 1.0;
+        if (x < 0)
+        {
+            for (int i = 4; i <= n - 3; i++)
+            {
+                product *= (i + x);
+            }
+            y = 13 - product;
+        }
+        else
+        {
+            for (int j = 1; j <= n; j++)
+            {
+                float sum = 0.0;
+                for (int i = 1; i <= n + 3; i++)
+                {
+                    sum += pow(i, 2) * (j + (2 - x) / (i + 4));
+                }
+                product *= sum;
+            }
+            y = product;
+        }
+        cout << endl << "x= " << x << "\ny= " << y << endl;
+        previous_results += "x = " + to_string(x) + "  |  y = " + to_string(y) + "\n";
+    }
+    return askToSaveFile(); 
+}
+
+
 int main()
 {
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
