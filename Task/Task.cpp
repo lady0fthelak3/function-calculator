@@ -77,44 +77,7 @@ int MainMenu()
         return choice - '0';
 }
 
-int CalculationsMenu()
-{
-    char choice = 0;
-    system("cls");
-    cout << "===================================================" << endl;
-    cout << "                                                   " << endl;
-    cout << green << "               Run calculations          " << reset << endl;
-    cout << "                                                   " << endl;
-    cout << "===================================================" << endl;
-    cout << "                                                   " << endl;
-    cout << "                                                   " << endl;
-    cout << "            1. Input from a file                    " << endl;
-    cout << "                                                   " << endl;
-    cout << "            2. Input from a keyboard               " << endl;
-    cout << "                                                   " << endl;
-    cout << "                                                   " << endl;
-    cout << "      ---------------------------------            " << endl;
-    cout << "                                                   " << endl;
-    cout << "     press 3 to return to the Main menu            " << endl;
-    cout << "                                                   " << endl;
-    cout << "===================================================" << endl;
-    cout << "                                                   " << endl;
-    cout << "            select an option : ";
-    cin >> choice;
 
-    if (choice == '3')
-    {
-        return '3';
-    }
-
-    if (choice < '1' || choice > '2')
-    {
-        cout << "Invalid choice. Please try again." << endl;
-        system("pause");
-        return CalculationsMenu();
-    }
- return choice;
-}
 
 char runFileCalculations() 
 {
