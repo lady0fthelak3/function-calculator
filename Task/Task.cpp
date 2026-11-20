@@ -430,50 +430,7 @@ int HelpMenu()
  return 0;
 }
 
-int ExitMenu()
-{
-    char choice = 0;
-    system("cls");
-    cout << "=======================================" << endl;
-    cout << endl;
-    cout << "     Are you sure you want to exit?    " << endl;
-    cout << endl;
-    cout << "         1. Yes (1)" << endl;
-    cout << "         2. No (2)" << endl;
-	cout << endl;
-    cout << "---------------------------------------" << endl;
-    cout << endl;
-    cout << "Press 3 to return to the Main menu     " << endl;
-    cout << endl;
-    cout << "=======================================" << endl;
-    cout << endl;
-    cout << "      select an option:";
 
-    cin >> choice;
-
-    if (choice == '1')
-    {
-        system("cls");
-        cout << endl;
-		cout << "-----------------------------------" << endl;
-		cout << endl;
-        cout << "     Exiting the program..." << endl << endl;
-		cout << "-----------------------------------" << endl;
-        return 1;
-    }
-    if (choice == '2')
-    {
-        return 0;
-    }
-        
-    if (choice == '3')
-    {
-       return 0;
-    }
-    cout << "Invalid input. Please try again." << endl;
-    system("pause");
-    return ExitMenu();
-}
 
 char runCalculations()
 {
