@@ -301,43 +301,6 @@ char askToSaveFile()
 }
 
 
-int DataMenu()
-{
-    char choice = 0;
-    system("cls");
-    cout << "===================================================" << endl;
-    cout << "                                                   " << endl;
-    cout << green << "              Management of data             " << reset << endl;
-    cout << "                                                   " << endl;
-    cout << "===================================================" << endl;
-    cout << "                                                   " << endl;
-    cout << "                                                   " << endl;
-    cout << "         1. Show the previous result               " << endl;
-    cout << "                                                   " << endl;
-    cout << "         2. Clear previous data                    " << endl;
-    cout << "                                                   " << endl;
-    cout << "                                                   " << endl;
-    cout << "      ---------------------------------            " << endl;
-    cout << "                                                   " << endl;
-    cout << "     press 3 to return to the Main menu            " << endl;
-    cout << "                                                   " << endl;
-    cout << "===================================================" << endl;
-    cout << "                                                   " << endl;
-    cout << "            select an option : ";
-
-    cin >> choice;
-
-    if (choice == '1' || choice == '2' || choice == '3')
-    {
-        return choice - '0';
-    }
-    else
-    {
-        cout << "Invalid choice. Please try again." << endl;
-        system("pause");
-        return DataMenu();
-    }
-}
    
 
 int clearData() 
