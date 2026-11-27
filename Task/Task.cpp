@@ -12,7 +12,7 @@ using namespace termcolor;
 
 string previous_results = "";
 bool has_data = false;
-
+// Polina did good
 int Menu()
 {
     char choice = 0;
