@@ -12,8 +12,7 @@ using namespace termcolor;
 
 string previous_results = "";
 bool has_data = false;
-
-
+//comnt
 
 int Menu()
 {
