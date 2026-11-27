@@ -1,4 +1,4 @@
-
+﻿
 #define TERMCOLOR_USE_ANSI_ESCAPE_SEQUENCES
 #include <iostream>
 #include <cmath>
@@ -12,7 +12,7 @@ using namespace termcolor;
 
 string previous_results = "";
 bool has_data = false;
-
+// Поліна молодець 
 int Menu()
 {
     char choice = 0;
